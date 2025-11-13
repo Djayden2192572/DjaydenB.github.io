@@ -23,22 +23,41 @@
     .videos {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
+      gap: 30px;
       width: 90%;
       max-width: 1200px;
+    }
+
+    .video-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
     video {
       width: 100%;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      margin-bottom: 10px;
     }
 
-    /* ✅ updated button style */
+    .video-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .video-desc {
+      font-size: 0.95rem;
+      color: #ccc;
+      max-width: 90%;
+    }
+
     .home-btn {
-      position: fixed;        /* stays on screen */
-      bottom: 20px;           /* visible from bottom */
-      left: 20px;             /* visible from left */
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
       padding: 15px 30px;
       font-size: 18px;
       background: #661414;
@@ -47,7 +66,7 @@
       border-radius: 8px;
       font-weight: 600;
       transition: background 0.18s ease, transform 0.18s ease;
-      z-index: 9999;          /* makes sure it’s on top */
+      z-index: 9999;
     }
 
     .home-btn:hover {
@@ -60,15 +79,43 @@
   <h1>My Portfolio</h1>
 
   <div class="videos">
-    <video src="Dextermania.mp4" autoplay loop muted></video>
-    <video src="Leosona.mp4" autoplay loop muted></video>
-    <video src="SFML Tank.mp4" autoplay loop muted></video>
-    <video src="Serenlune.mp4" autoplay loop muted></video>
-    <video src="video5.mp4" autoplay loop muted></video>
-    <video src="video6.mp4" autoplay loop muted></video>
+    <div class="video-card">
+      <video src="Dextermania.mp4" autoplay loop muted></video>
+      <div class="video-title">Dextermania</div>
+      <div class="video-desc">A Game about dexter climbing through the mountain of levels to save rita!. This game was made in 10 weeks and it was my first experience with 3D Unity.</div>
+    </div>
+
+    <div class="video-card">
+      <video src="Leosona.mp4" autoplay loop muted></video>
+      <div class="video-title">Leosona 5</div>
+      <div class="video-desc">Een tower defense game gemaakt in tien weken in samenwerking met Jack van Vloten,(https://github.com/Inflol13) De game gaat over Leo Dooley die met de hulp van zijn vrienden tegen het kwaad vecht.</div>
+    </div>
+
+    <div class="video-card">
+      <video src="SFML Tank.mp4" autoplay loop muted></video>
+      <div class="video-title">SFML Tanks</div>
+      <div class="video-desc">Een Wii tanks!g eïnspireerde game gemaakt in tien weken in SFML, weer in samenwerking met Jack van Vloten.(https://github.com/Inflol13) De game gaat over Alex de leeuw die vecht tegen Ben </div>
+    </div>
+
+    <div class="video-card">
+      <video src="Serenlune.mp4" autoplay loop muted></video>
+      <div class="video-title">Serenlune</div>
+      <div class="video-desc">Mijn allereerste game, gemaakt in Unity. Ik had tien weken de tijd voor dit project en moest een aantal dingen schrappen. De game gaat over Kanye North die de dansvloer op komt.</div>
+    </div>
+
+    <div class="video-card">
+      <video src="Wakamangers.mp4" autoplay loop muted></video>
+      <div class="video-title">Wakamangers</div>
+      <div class="video-desc">Mijn eerste C# text gebaseerde game.Het is weer gemaakt in tien weken en het is gewoon een klassieke rpg. </div>
+    </div>
+
+    <div class="video-card">
+      <video src="Morality.mp4" autoplay loop muted></video>
+      <div class="video-title">Morality</div>
+      <div class="video-desc">Mijn eerste C++ text gebaseerde game, het is weer gemaakt in tien weken en is een game gebaseerd op de serie Dexter./div>
+    </div>
   </div>
 
-  
   <a href="index.html" class="home-btn">← Back</a>
 </body>
 </html>

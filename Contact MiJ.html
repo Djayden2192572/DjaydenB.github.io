@@ -1,0 +1,166 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Mij</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: url('BG2.png') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    .background {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .portrait {
+      position: absolute;
+      width: 400px; 
+      left: 50%;    
+      top: 70%;    
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+
+    .ui-overlay {
+      position: absolute;
+      width: 1400px;
+      top: 40%;
+      left: 57%;
+      transform: translate(-50%, -50%);
+      object-fit: contain;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .button {
+      position: absolute;
+      width: 180px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0);
+      border: none;
+      cursor: pointer;
+      z-index: 3;
+    }
+
+    /* Button positions — adjust these freely */
+    .linkedin {
+      top: 17%;
+      left: 65%;
+    }
+
+    .github {
+      top: 70%;
+      left: 65%;
+    }
+
+    .cv {
+      top: 43%;
+      left: 20%;
+    }
+
+    .phone {
+      top: 10%;
+      left: 20%;
+    }
+
+    .email {
+      top: 50%;
+      left: 80%;
+    }
+
+    .home-btn {
+      position: absolute;
+      top: 38%;
+      left: 58%;
+      width: 180px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0);
+      border: none;
+      cursor: pointer;
+      z-index: 3;
+    }
+
+    .info-popup {
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-size: 18px;
+      display: none;
+      z-index: 10;
+    }
+
+  </style>
+</head>
+<body>
+  <img src="Djaysona.png" class="ui-overlay" alt="Persona 5 Contact UI">
+  <img src="Djayden Ultra.png" class="portrait" alt="Djayden">
+
+  <!-- Transparent clickable buttons -->
+  <a href="https://www.linkedin.com/in/djayden-brouwer-613402365" target="_blank">
+    <button class="button linkedin"></button>
+  </a>
+
+  <a href="https://github.com/Djayden2192572" target="_blank">
+    <button class="button github"></button>
+  </a>
+
+  <!-- CV Button -->
+  <a href="CV.html">
+    <button class="button cv"></button>
+  </a>
+
+  <!-- Show info buttons -->
+  <button class="button phone"></button>
+  <button class="button email"></button>
+
+  <!-- Back button -->
+  <a href="index.html">
+    <button class="home-btn"></button>
+  </a>
+
+  <!-- Popup info -->
+  <div class="info-popup" id="infoPopup"></div>
+
+  <script>
+    const phoneBtn = document.querySelector('.phone');
+    const emailBtn = document.querySelector('.email');
+    const popup = document.getElementById('infoPopup');
+
+    phoneBtn.addEventListener('click', () => {
+      popup.textContent = '📞 Telefoon: +31 6 29406494';
+      popup.style.display = 'block';
+      setTimeout(() => popup.style.display = 'none', 3000);
+    });
+
+    emailBtn.addEventListener('click', () => {
+      popup.textContent = '✉️ Email: brouwerdjay@gmail.com';
+      popup.style.display = 'block';
+      setTimeout(() => popup.style.display = 'none', 3000);
+    });
+  </script>
+</body>
+</html>
