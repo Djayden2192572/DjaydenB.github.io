@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      background: #001f3f;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .videos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      width: 90%;
+      max-width: 1200px;
+    }
+
+    video {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    /* ✅ updated button style */
+    .home-btn {
+      position: fixed;        /* stays on screen */
+      bottom: 20px;           /* visible from bottom */
+      left: 20px;             /* visible from left */
+      padding: 15px 30px;
+      font-size: 18px;
+      background: #661414;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.18s ease, transform 0.18s ease;
+      z-index: 9999;          /* makes sure it’s on top */
+    }
+
+    .home-btn:hover {
+      background: #8b2b2b;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <h1>My Portfolio</h1>
+
+  <div class="videos">
+    <video src="Dextermania.mp4" autoplay loop muted></video>
+    <video src="Leosona.mp4" autoplay loop muted></video>
+    <video src="SFML Tank.mp4" autoplay loop muted></video>
+    <video src="Serenlune.mp4" autoplay loop muted></video>
+    <video src="video5.mp4" autoplay loop muted></video>
+    <video src="video6.mp4" autoplay loop muted></video>
+  </div>
+
+  
+  <a href="Portofolo.html" class="home-btn">← Back</a>
+</body>
+</html>

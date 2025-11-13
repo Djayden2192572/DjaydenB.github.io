@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio Homepage</title>
+  <style>
+    @font-face {
+  font-family: 'MyCustomFont';
+  src: url('FranklinGothicITALIC.ttf') format('truetype');
+}
+    :root {
+      --button:#1e1777;
+      --button-hover:#8b2b2b;
+        font-family: 'MyCustomFont', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      .corner-image {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 390px;   /* adjust */
+  height: 10x;   /* keeps proportions */
+  transform: translate(1160px, 0px); /* fine-tune placement */
+  pointer-events: none; /* lets mouse ignore it */
+  z-index: -2;
+}
+
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+
+    body {
+      
+  position: relative;
+  overflow: hidden; /* prevents scrollbars if images go slightly offscreen */
+      background: url('BG.png') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(2, 150px);
+      grid-auto-rows: 80px;
+      gap: 12px;
+    }
+
+    .btn {
+      background: var(--button);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 24px;
+      color: #FFFFFF;
+      cursor: pointer;
+      transition: transform 0.18s ease, background 0.18s ease;
+    }
+
+    .btn:hover {
+      background: var(--button-hover);
+      transform: scale(1.03);
+    }
+     .controls .btn:nth-child(1) { transform: translateX(150px) translateY(-120px); }
+
+  .controls .btn:nth-child(2) { transform: translateX(-60px) translateY(-30px); }
+
+  .controls .btn:nth-child(3) { transform: translateX(60px) translateY(-30px); }
+
+  .controls .btn:nth-child(4) { transform: translateX(-140px) translateY(60px); }
+
+  .controls .btn:nth-child(5) { transform: translateX(-110px) translateY(150px); }
+
+  .controls .btn:nth-child(6) { transform: translateX(-210px) translateY(60px); }
+  .corner-image {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 390px;
+  height: 490px;
+  transform: translate(1060px, -130px);
+  pointer-events: none;
+}
+
+.corner-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 390px;
+  transform: translate(1060px, -600px);
+  color: #fff;
+  text-align: center;
+  font-size: 42px;
+  font-weight: 700;
+
+}
+.hand-image {
+  position: absolute;
+  bottom: 0; 
+  left: 0;
+  width: 1075px;  /* adjust to your liking */
+  height: auto;
+  transform: translate(340px, 40px) rotate(-2deg); /* move + rotate if needed */
+  z-index: -1; /* makes sure it’s on top of the background, but under buttons */
+  pointer-events: none; /* ignore mouse clicks */
+}
+.bottom-text {
+  position: absolute;
+  bottom: 20px;
+  left: 70%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+}
+
+  </style>
+</head>
+<body>
+  <div class="controls">
+   <a class="btn" href="Portofolo.html">Home</a>
+    <a class="btn" href="revolver about me.html">Over mij</a>
+    <a class="btn" href="CV.html">CV</a>
+    <a class="btn" href="MijnPortfolio.html">Portfolio</a>
+    <div class="btn">Getuigen</div>
+    <div class="btn">Contact mij</div>
+    <img src="Djay.png" class="corner-image" alt="hand image">
+    <img src="Jonk.png" class="hand-image" alt="drawn hand">
+
+ <div class="corner-text">Djayden Brouwer</div>
+     <img src="Djay.png" class="corner-image" alt="hand image">
+    <img src="Jonk.png" class="hand-image" alt="drawn hand">
+
+ <div class="corner-text">Djayden Brouwer</div>
+ 
+ 
+ <div class="bottom-text">Edited fan art of Joker from Persona 5 — original character © Atlus/Sega.</div>
+ 
+  </div>
+  </div>
+</body>
+</html>

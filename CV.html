@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CV</title>
+  <style>
+     @font-face {
+  font-family: 'MyCustomFont';
+  src: url('FranklinGothicITALIC.ttf') format('truetype');
+}
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; 
+     font-family: 'MyCustomFont', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    --bg-light: #0a2647; }
+
+    body {
+      position: relative;
+      overflow: hidden;
+      background: url('BG2.png') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .cv-container {
+      position: relative;
+      max-width: 900px;
+      width: 100%;
+    }
+
+    .cv-image {
+      width: 60%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      margin-left: 600px; /* small gap if you add other content to the left */
+      max-width: 600px;
+    }
+
+    .home-btn {
+      position: absolute;
+      bottom:20px;
+      left:-190px;
+      top: auto;
+      right: auto;
+      padding: 30px 50px;
+      font-size: 18px;
+      background: #661414;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.18s ease, transform 0.18s ease;
+      z-index: 10;
+    }
+
+    .home-btn:hover {
+      background: #8b2b2b;
+      transform: scale(1.05);
+    }
+    .bottom-text {
+  position: absolute;
+  bottom: 550px;
+  left: -5%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 80px;
+  font-weight: bold;
+  text-align: center;
+}
+  </style>
+</head>
+<body>
+  <div class="cv-container">
+    <a href="Djayden2.pdf" download="Djayden2.pdf" title="Download CV">
+      <img src="Djayden.png" class="cv-image" alt="CV preview">
+    <a href="Portofolo.html" class="home-btn">← Back</a>
+     <div class="bottom-text">Mijn CV</div>
+  </div>
+</body>
+</html>

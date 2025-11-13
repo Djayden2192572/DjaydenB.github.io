@@ -1,0 +1,236 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>About Me</title>
+<style>
+   @font-face {
+  font-family: 'MyCustomFont';
+  src: url('FranklinGothicITALIC.ttf') format('truetype');
+}
+  :root{
+    --blue: #004aad;
+    --red: #661414;
+     font-family: 'MyCustomFont', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    --bg-light: #0a2647; 
+    --chamber-size: 420px;
+    --slot-size: 90px;
+    --content-width: 720px;
+    --accent-glow: rgba(246,200,80,0.12);
+  }
+   html,body{height:100%;margin:0;font-family:'MyCustomFont', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+  /* split background: left is chosen (light), right is dark blue */
+  body{
+     position: relative;
+    overflow: hidden;
+    background: linear-gradient(to right, var(--bg-light) 50%, var(--blue) 50%);
+    display:flex;align-items:center;justify-content:center;gap:48px;padding:40px;
+    color:#111;
+    
+    
+  }
+
+  .container{
+    width:100%;max-width:1200px;display:flex;gap:36px;align-items:center;justify-content:center;
+  }
+
+  /* Left: chamber */
+  .hero-left{
+    width:calc(var(--chamber-size) + 40px);display:flex;align-items:center;justify-content:center;position:relative;
+  }
+
+  .chamber{
+    width:var(--chamber-size);height:var(--chamber-size);border-radius:50%;background:linear-gradient(180deg,#0b2a63,#00204a);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35), inset 0 8px 20px rgba(255,255,255,0.03);
+    display:grid;place-items:center;position:relative;transform:translateZ(0);
+  }
+
+  .chamber::after{
+    /* central axis */
+    content:'';position:absolute;width:20%;height:20%;border-radius:50%;background:rgba(255,255,255,0.06);backdrop-filter: blur(1px);
+  }
+
+  .slots{
+    position:absolute;inset:0;display:block;pointer-events:none;
+  }
+
+  /* each slot is positioned by math in JS (transform rotate + translate) */
+  .slot{
+    position:absolute;left:50%;top:50%;width:var(--slot-size);height:var(--slot-size);
+    margin-left: calc(var(--slot-size) / -2);margin-top: calc(var(--slot-size) / -2);
+    border-radius:14px;display:flex;align-items:center;justify-content:center;pointer-events:auto;
+    transition:transform 260ms cubic-bezier(.2,.9,.3,1), box-shadow 200ms, opacity 200ms;
+    transform-origin:50% calc(50% + 170px);
+  }
+
+  .slot button{
+    width:100%;height:100%;border-radius:50%;border:2px solid rgba(0,0,0,0.28);background:linear-gradient(180deg, var(--red), #4e0f0f);
+    color:#fff;font-weight:600;cursor:pointer;outline:none;padding:8px;text-align:center;pointer-events:auto;
+    box-shadow: 0 8px 18px rgba(102,20,20,0.25), 0 1px 0 rgba(255,255,255,0.02) inset;
+    display:flex;align-items:center;justify-content:center;font-size:14px;line-height:1.1;
+  }
+  .slot button:focus{box-shadow:0 12px 30px rgba(246,80,60,0.18);transform:translateY(-4px) scale(1.02);} 
+  .slot button:hover{transform:translateY(-4px);} 
+
+  /* selected state */
+  .slot[data-selected="true"] button{box-shadow: 0 14px 36px rgba(246,80,60,0.28), inset 0 2px 0 rgba(255,255,255,0.03);}
+
+  /* subtle numbers around chamber */
+  .rim{
+    position:absolute;inset:0;border-radius:50%;pointer-events:none;box-shadow: 0 0 0 6px rgba(255,255,255,0.02) inset;
+  }
+
+  /* Right: content */
+  .hero-right{width:var(--content-width);max-width:48%;min-width:320px;padding:28px;border-radius:16px;box-shadow:0 10px 30px rgba(2,6,23,0.35);background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));backdrop-filter: blur(6px);}
+  .title{font-size:22px;font-weight:700;color:#fff;margin:0 0 10px 0;}
+  .subtitle{color:rgba(255,255,255,0.85);margin:0 0 18px 0;font-weight:500}
+  .content-box{background:rgba(255,255,255,0.02);padding:18px;border-radius:12px;color:#fff;min-height:160px;display:flex;align-items:flex-start;}
+
+  /* Make text readable on the blue side by adding a faint left-border if background is dark */
+  @media (max-width:980px){
+    body{padding:20px}
+    .container{flex-direction:column}
+    .hero-right{max-width:100%;width:100%}
+  }
+   .corner-image {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 590px;
+    height: 600px;
+    transform: translate(110px, 90px);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .hand-image {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 375px;
+    height: auto;
+    transform: translate(-1199px, 40px) rotate(-2deg);
+    z-index: 0;
+    pointer-events: none;
+  }
+      .home-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      background: #661414;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.18s ease, transform 0.18s ease;
+      z-index: 10;
+    }
+
+    .home-btn:hover {
+      background: #8b2b2b;
+      transform: scale(1.05);
+    }
+  
+  
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero-left">
+      <div class="chamber" role="application" aria-label="Options chamber">
+        <div class="rim"></div>
+        <div class="slots" id="slots"></div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <h1 class="title">Over Mij</h1>
+      <div class="subtitle">Looking Cool, Djayden!</div>
+      <div class="content-box" id="contentBox">Select a slot in the chamber to see the text here.</div>
+    </div>
+    <a href="Portofolo.html" class="home-btn">← Back</a>
+  </div>
+ <img src="Phone.png" class="corner-image" alt="profile image">
+    <img src="" class="hand-image" alt="drawn hand">
+<script>
+  // Options that appear in the chamber and the text they set
+  // Edit these to change labels and the content that appears on click
+  const options = [
+    {label: 'Persoonlijke Informatie', text: 'Ik ben 18 jaar oud, ik woon in almere en ik ben op dit moment in mijn tweede jaar van mijn opleiding software developer.'},
+    {label: 'Kwaliteiten', text: 'Ik ben creatief,Enthousiast,Gezellig,Vrolijk,Ordelijk en Sociaal.'},
+    {label: 'Interessen', text: 'Ik hou natuurlijk van video games zoals Dark Souls, The Legend of Zelda en Shin Megami Tensei. Daarnaast hou ik ook van muziek, mijn favoriete artiesten zijn Nujabes, A Tribe called Quest en MF Doom. Verder hou ik ook van anime en manga zoals Samurai Champloo, Bleach en Death Note.'},
+    {label: 'Ervaring', text: 'ik heb ervaring met C#, Unity, C++, ook heb ik ervaring met HTML, CSS. Ik heb meerdere games gemaakt in unity en ook meerdere text based games in beide c++ en c#'},
+    {label: 'Kunst', text: 'Ik ben super creatief en daardoor maak ik meestal de loading screens voor mijn projecten, de ideeen voor de game thema\'s komen ook meestal van mij. Ook meestal bedenk ik de Muziek voor de game. Voor mij is de ziel van een game het belangrijkste, als ik kan zien dat er passie in een project zit dan weet ik dat het goed is.'},
+    {label: 'Op dit Moment..', text: 'Ik ben op dit moment in mijn tweede jaar van mijn opleiding software developer en ik ben opzoek naar een stage plek voor 2025.'}
+  ];
+
+  const slotsEl = document.getElementById('slots');
+  const contentBox = document.getElementById('contentBox');
+
+  // create slot elements positioned evenly around the circle
+  const N = options.length;
+  const radius = 160; // how far from center the slots sit
+
+  options.forEach((opt, i) => {
+    const angle = (i / N) * Math.PI * 2 - Math.PI / 2; // start at top
+    const x = Math.cos(angle) * radius;
+    const y = Math.sin(angle) * radius;
+
+    const slot = document.createElement('div');
+    slot.className = 'slot';
+    slot.style.transform = `translate(${x}px, ${y}px)`;
+    slot.setAttribute('role','button');
+    slot.setAttribute('tabindex','0');
+    slot.setAttribute('aria-label', opt.label);
+
+    const btn = document.createElement('button');
+    btn.innerText = opt.label;
+    btn.dataset.index = i;
+
+    // click handler
+    btn.addEventListener('click', (e) => selectOption(i));
+    // keyboard accessibility
+    slot.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectOption(i); }
+    });
+
+    slot.appendChild(btn);
+    slotsEl.appendChild(slot);
+  });
+
+  // initial selection
+  let selected = null;
+  function selectOption(index){
+    const slotNodes = Array.from(document.querySelectorAll('.slot'));
+    slotNodes.forEach((s, idx) => {
+      const isSel = idx === index;
+      s.setAttribute('data-selected', isSel ? 'true' : 'false');
+      s.querySelector('button').setAttribute('aria-pressed', isSel ? 'true' : 'false');
+    });
+
+    selected = index;
+    // update content (safe plain text)
+    contentBox.textContent = options[index].text;
+
+    // small animation: rotate the whole chamber so selected slot is at top
+    const angle = (index / N) * 360;
+    const chamber = document.querySelector('.chamber');
+    chamber.style.transition = 'transform 600ms cubic-bezier(.2,.9,.3,1)';
+    chamber.style.transform = `rotate(${-angle}deg)`;
+
+    // compensate buttons so labels remain upright
+    document.querySelectorAll('.slot').forEach((slot, idx) => {
+      const innerBtn = slot.querySelector('button');
+      innerBtn.style.transform = `rotate(${angle}deg)`; // keep text readable
+    });
+  }
+
+  // optional: set first option active on load
+  selectOption(0);
+
+</script>
+</body>
+</html>
